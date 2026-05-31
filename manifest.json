@@ -1,0 +1,27 @@
+{
+  "name": "Yulan Collection",
+  "short_name": "Yulan",
+  "description": "Koleksi jilbab premium — anggun, nyaman, dan elegan untuk setiap muslimah modern.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FAF6EF",
+  "theme_color": "#0B5C2E",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
