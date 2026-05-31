@@ -485,6 +485,144 @@
     .product-grid{grid-template-columns:repeat(2,1fr);gap:8px}
     .catalog-section{padding:10px 8px 100px}
   }
+
+  /* ── FLOATING CART ── */
+  .cart-float{
+    position:fixed;bottom:24px;left:20px;z-index:500;
+    width:56px;height:56px;border-radius:50%;
+    background:linear-gradient(135deg,var(--em),var(--em2));
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;cursor:pointer;text-decoration:none;color:#fff;
+    box-shadow:0 6px 24px var(--shadow);
+    transition:transform .2s;border:none;
+    animation:cartPulse 3s ease-in-out infinite;
+  }
+  .cart-float:hover{transform:scale(1.12)}
+  @keyframes cartPulse{0%,100%{box-shadow:0 6px 24px var(--shadow)}50%{box-shadow:0 6px 24px var(--shadow),0 0 0 10px rgba(11,92,46,.1)}}
+  .cart-count{
+    position:absolute;top:-4px;right:-4px;
+    background:linear-gradient(135deg,var(--gold),var(--gold2));
+    color:var(--text);font-size:11px;font-weight:700;
+    min-width:22px;height:22px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 6px var(--shad-g);
+    font-family:'Poppins',sans-serif;
+  }
+
+  /* ── CART MODAL ── */
+  .cart-items{max-height:40vh;overflow-y:auto;margin-bottom:14px}
+  .cart-item{
+    display:flex;align-items:center;gap:10px;
+    padding:10px;background:#fff;border:1.5px solid var(--border);
+    border-radius:10px;margin-bottom:8px;
+  }
+  .cart-item-img{
+    width:50px;height:60px;border-radius:8px;overflow:hidden;
+    background:var(--em-pale);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+  }
+  .cart-item-img img{width:100%;height:100%;object-fit:cover}
+  .cart-item-info{flex:1;min-width:0}
+  .cart-item-info h4{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cart-item-info p{font-size:11px;color:var(--soft)}
+  .cart-qty{display:flex;align-items:center;gap:6px;flex-shrink:0}
+  .cart-qty button{
+    width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);
+    background:#fff;font-size:14px;font-weight:700;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .2s;font-family:'Poppins',sans-serif;color:var(--text);
+  }
+  .cart-qty button:hover{background:var(--em);color:#fff;border-color:var(--em)}
+  .cart-qty span{font-size:14px;font-weight:700;min-width:20px;text-align:center}
+  .cart-item-remove{
+    background:none;border:none;font-size:16px;cursor:pointer;
+    color:var(--soft);transition:color .2s;padding:4px;flex-shrink:0;
+  }
+  .cart-item-remove:hover{color:#DC2626}
+  .cart-summary{
+    background:var(--em-pale);border-radius:10px;padding:12px;margin-bottom:14px;
+  }
+  .cart-summary-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+  .cart-summary-total{
+    display:flex;justify-content:space-between;font-size:16px;font-weight:700;
+    color:var(--em);padding-top:8px;border-top:1.5px solid var(--em-light);margin-top:4px;
+  }
+  .cart-empty{text-align:center;padding:30px;color:var(--soft)}
+  .cart-empty .icon{font-size:40px;margin-bottom:8px}
+  .cart-note{font-size:11px;color:var(--soft);text-align:center;margin-top:8px;line-height:1.6}
+
+  /* ── ORDER MANAGEMENT ── */
+  .order-card{
+    background:#fff;border:1.5px solid var(--border);border-radius:14px;
+    padding:16px;margin-bottom:10px;transition:box-shadow .2s,border-color .2s;
+  }
+  .order-card:hover{box-shadow:0 4px 16px var(--shadow);border-color:var(--em-light)}
+  .order-header{
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:8px;margin-bottom:10px;
+  }
+  .order-id{font-size:12px;color:var(--soft);font-weight:600}
+  .order-date{font-size:11px;color:var(--soft)}
+  .order-status{
+    padding:4px 12px;border-radius:20px;font-size:10px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.5px;
+  }
+  .order-status.baru{background:#FEF3C7;color:#92400E}
+  .order-status.diproses{background:#DBEAFE;color:#1E40AF}
+  .order-status.dikirim{background:#DCFCE7;color:#16A34A}
+  .order-status.selesai{background:#F3F4F6;color:#6B7280}
+  .order-status.dibatalkan{background:#FEE2E2;color:#DC2626}
+  .order-customer{font-size:13px;margin-bottom:8px;line-height:1.7}
+  .order-customer strong{color:var(--em)}
+  .order-items-list{
+    font-size:12px;color:var(--soft);line-height:1.8;margin-bottom:8px;
+    padding:10px;background:var(--em-pale);border-radius:8px;
+  }
+  .order-total{font-size:15px;font-weight:700;color:var(--em);margin-bottom:10px}
+  .order-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .order-actions select{
+    padding:6px 10px;border-radius:8px;border:1.5px solid var(--border);
+    font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;
+    color:var(--soft);cursor:pointer;outline:none;
+  }
+  .order-actions select:focus{border-color:var(--em)}
+  .btn-wa-order{
+    padding:6px 12px;border-radius:8px;border:none;
+    background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;
+    font-size:11px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;
+    transition:opacity .2s;
+  }
+  .btn-wa-order:hover{opacity:.85}
+  .btn-del-order{
+    padding:6px 12px;border-radius:8px;border:none;
+    background:#FEE2E2;color:#DC2626;
+    font-size:11px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;
+    transition:all .2s;
+  }
+  .btn-del-order:hover{background:#DC2626;color:#fff}
+  .order-filter-row{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}
+  .order-filter-btn{
+    padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);
+    background:var(--warm);font-family:'Poppins',sans-serif;
+    font-size:11px;font-weight:600;color:var(--soft);cursor:pointer;transition:all .2s;
+  }
+  .order-filter-btn.active{background:var(--em);color:#fff;border-color:var(--em)}
+  .orders-badge{
+    background:linear-gradient(135deg,var(--gold),var(--gold2));
+    color:var(--text);font-size:10px;font-weight:700;
+    padding:2px 7px;border-radius:10px;margin-left:4px;
+  }
+  .btn-cart{
+    background:linear-gradient(135deg,var(--em),var(--em2));color:#fff;
+    box-shadow:0 3px 10px var(--shadow);
+  }
+  .btn-cart:hover{opacity:.88;transform:scale(.97)}
+
+  @media(max-width:640px){
+    .cart-float{bottom:18px;left:14px;width:52px;height:52px;font-size:22px}
+    .order-header{flex-direction:column;align-items:flex-start}
+    .order-actions{width:100%}
+  }
   </style>
 </head>
 <body>
@@ -588,6 +726,7 @@
     </div>
     <div class="admin-tabs">
       <button class="tab-btn active" onclick="switchTab('tabProducts',this)">📦 Produk</button>
+      <button class="tab-btn" onclick="switchTab('tabOrders',this)">📝 Pesanan<span class="orders-badge" id="ordersBadge" style="display:none">0</span></button>
       <button class="tab-btn" onclick="switchTab('tabAdd',this)">➕ Tambah</button>
       <button class="tab-btn" onclick="switchTab('tabSettings',this)">⚙️ Pengaturan</button>
     </div>
@@ -738,6 +877,23 @@
       </div>
     </div>
 
+    <!-- Tab Pesanan -->
+    <div class="admin-tab-content" id="tabOrders">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <h3 style="font-family:'Amiri',serif;font-size:20px;font-weight:700;color:var(--em)">📝 Daftar Pesanan</h3>
+        <span class="badge-count" id="adminOrderCount">0 Pesanan</span>
+      </div>
+      <div class="order-filter-row">
+        <button class="order-filter-btn active" onclick="filterOrders('all',this)">Semua</button>
+        <button class="order-filter-btn" onclick="filterOrders('baru',this)">🟡 Baru</button>
+        <button class="order-filter-btn" onclick="filterOrders('diproses',this)">🔵 Diproses</button>
+        <button class="order-filter-btn" onclick="filterOrders('dikirim',this)">🟢 Dikirim</button>
+        <button class="order-filter-btn" onclick="filterOrders('selesai',this)">✅ Selesai</button>
+        <button class="order-filter-btn" onclick="filterOrders('dibatalkan',this)">❌ Batal</button>
+      </div>
+      <div id="ordersList"></div>
+    </div>
+
   </div>
 </div>
 
@@ -753,6 +909,12 @@
 
 <!-- FLOATING WA BUTTON -->
 <a class="wa-float" id="waFloat" href="#" onclick="openWADirect();return false" title="Chat WhatsApp">✆</a>
+
+<!-- FLOATING CART BUTTON -->
+<button class="cart-float" id="cartFloat" onclick="openOverlay('overlayCart')" title="Keranjang Belanja" style="display:none">
+  🛒
+  <span class="cart-count" id="cartCount">0</span>
+</button>
 
 <!-- MODAL: LOGIN -->
 <div class="overlay" id="overlayLogin">
@@ -805,6 +967,43 @@
       <p class="detail-desc" id="detailDesc"></p>
       <div class="detail-price" id="detailPrice"></div>
       <div class="detail-actions" id="detailActions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: KERANJANG -->
+<div class="overlay" id="overlayCart">
+  <div class="modal" style="max-width:500px">
+    <div class="modal-header">
+      <span class="modal-title">🛒 Keranjang Belanja</span>
+      <button class="modal-close" onclick="closeOverlay('overlayCart')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="cart-items" id="cartItems"></div>
+      <div id="cartSummary"></div>
+      <div id="cartCheckoutForm" style="display:none">
+        <div style="border-top:1.5px solid var(--em-pale);padding-top:14px;margin-top:6px">
+          <div style="font-family:'Amiri',serif;font-size:17px;font-weight:700;color:var(--em);margin-bottom:12px">📦 Data Pengiriman</div>
+          <div class="form-group">
+            <label class="form-label">Nama Lengkap *</label>
+            <input class="form-input" id="cartName" placeholder="Nama penerima"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">No. HP / WhatsApp *</label>
+            <input class="form-input" id="cartPhone" placeholder="cth: 08123456789" type="tel"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Alamat Lengkap *</label>
+            <textarea class="form-textarea" id="cartAddress" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Catatan (Opsional)</label>
+            <input class="form-input" id="cartNotes" placeholder="cth: Warna navy, ukuran L"/>
+          </div>
+          <button class="btn-primary" onclick="doCheckout()" style="margin-bottom:6px">📱 Pesan via WhatsApp</button>
+          <p class="cart-note">💡 Harga belum termasuk ongkir. Total akhir akan di-deal via WhatsApp.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -864,21 +1063,117 @@ function initFirebase(){
     const data = snapshot.val()||{};
     _products  = Array.isArray(data.products)  ? data.products  : (data.products ? Object.values(data.products) : null);
     _settings  = data.settings || null;
+    _orders    = Array.isArray(data.orders) ? data.orders : (data.orders ? Object.values(data.orders) : []);
     // Pertama kali: isi dengan sample products
     if(!_products){ _products=SAMPLE_PRODUCTS; db.ref('products').set(SAMPLE_PRODUCTS); }
     if(!_settings){ _settings={wa:'6285262639795',name:'Yulan Collection',tagline:'Jilbab Cantik Pilihan',pass:DEFAULT_PASS}; db.ref('settings').set(_settings); }
-    renderCatalog();
+    renderCatalog();updateCartBadge();
   }).catch(function(e){
     console.error('Firebase error:',e);
     _products = SAMPLE_PRODUCTS;
     _settings = {wa:'6285262639795',name:'Yulan Collection',tagline:'Jilbab Cantik Pilihan',pass:DEFAULT_PASS};
-    renderCatalog();
+    _orders = [];
+    renderCatalog();updateCartBadge();
     toast('⚠️ Gagal terhubung ke database. Cek konfigurasi Firebase.');
   });
 }
 
 // ─── STATE ──────────────────────────────────────────────
 let currentFilter='all',currentStock='all',isAdmin=false;
+let currentOrderFilter='all';
+let _orders=null;
+function getOrders(){return _orders||[]}
+function saveOrdersData(orders){_orders=orders;db.ref('orders').set(orders).catch(e=>console.error('Firebase orders error:',e))}
+
+// ─── CART (localStorage) ──────────────────────────────────
+function getCart(){try{return JSON.parse(localStorage.getItem('yulan_cart'))||[]}catch(e){return[]}}
+function saveCart(cart){localStorage.setItem('yulan_cart',JSON.stringify(cart));updateCartBadge()}
+function updateCartBadge(){
+  const cart=getCart();const total=cart.reduce((s,c)=>s+c.qty,0);
+  const countEl=document.getElementById('cartCount');
+  const floatEl=document.getElementById('cartFloat');
+  if(countEl)countEl.textContent=total;
+  if(floatEl)floatEl.style.display=total>0?'flex':'none';
+}
+function addToCart(id){
+  const p=getProducts().find(x=>x.id===id);if(!p)return;
+  const cart=getCart();
+  const existing=cart.find(c=>c.id===id);
+  if(existing){existing.qty++;}
+  else{cart.push({id:p.id,name:p.name,price:p.price,image:p.image,category:p.category,qty:1,etalase:p.etalase})}
+  saveCart(cart);
+  toast(`🛒 ${p.name} ditambahkan ke keranjang!`);
+}
+function removeFromCart(id){
+  const cart=getCart().filter(c=>c.id!==id);
+  saveCart(cart);renderCart();
+}
+function updateCartQty(id,delta){
+  const cart=getCart();const item=cart.find(c=>c.id===id);
+  if(!item)return;
+  item.qty+=delta;
+  if(item.qty<1){removeFromCart(id);return}
+  saveCart(cart);renderCart();
+}
+function renderCart(){
+  const cart=getCart();
+  const itemsEl=document.getElementById('cartItems');
+  const summaryEl=document.getElementById('cartSummary');
+  const formEl=document.getElementById('cartCheckoutForm');
+  if(!cart.length){
+    itemsEl.innerHTML='<div class="cart-empty"><div class="icon">🛒</div><h3 style="font-family:\'Amiri\',serif;font-size:18px;color:var(--soft)">Keranjang Kosong</h3><p style="font-size:12px">Yuk belanja jilbab cantik!</p></div>';
+    summaryEl.innerHTML='';formEl.style.display='none';return;
+  }
+  itemsEl.innerHTML=cart.map(c=>`<div class="cart-item">
+    <div class="cart-item-img">${c.image?`<img src="${c.image}" alt="${c.name}" onerror="this.parentElement.innerHTML='🧕'"/>`:'🧕'}</div>
+    <div class="cart-item-info"><h4>${c.name}</h4><p>${c.category} · ${c.price||'Hubungi Kami'}</p></div>
+    <div class="cart-qty">
+      <button onclick="updateCartQty(${c.id},-1)">−</button>
+      <span>${c.qty}</span>
+      <button onclick="updateCartQty(${c.id},1)">+</button>
+    </div>
+    <button class="cart-item-remove" onclick="removeFromCart(${c.id})" title="Hapus">✕</button>
+  </div>`).join('');
+  let subtotals=cart.map(c=>({name:c.name,qty:c.qty,unit:px(c.price),total:px(c.price)*c.qty}));
+  let grandTotal=subtotals.reduce((s,c)=>s+c.total,0);
+  summaryEl.innerHTML=`<div class="cart-summary">
+    ${subtotals.map(s=>`<div class="cart-summary-row"><span>${s.name} ×${s.qty}</span><span>Rp ${s.total.toLocaleString('id')}</span></div>`).join('')}
+    <div class="cart-summary-total"><span>Total Sementara</span><span>Rp ${grandTotal.toLocaleString('id')}</span></div>
+  </div>`;
+  formEl.style.display='block';
+}
+function doCheckout(){
+  const cart=getCart();if(!cart.length){toast('❌ Keranjang kosong!');return}
+  const name=document.getElementById('cartName').value.trim();
+  const phone=document.getElementById('cartPhone').value.trim();
+  const addr=document.getElementById('cartAddress').value.trim();
+  const notes=document.getElementById('cartNotes').value.trim();
+  if(!name){alert('Nama lengkap wajib diisi!');return}
+  if(!phone){alert('No. HP wajib diisi!');return}
+  if(!addr){alert('Alamat wajib diisi!');return}
+  // Build WA message
+  let itemsText=cart.map((c,i)=>`${i+1}. ${c.name} (×${c.qty}) — ${c.price||'Hubungi'}`).join('\n');
+  let grandTotal=cart.reduce((s,c)=>s+px(c.price)*c.qty,0);
+  let msg=`Assalamu'alaikum Kak 🙏\n\nSaya ingin memesan beberapa produk berikut:\n\n🛒 *RINCIAN PESANAN*\n━━━━━━━━━━━━━━━\n${itemsText}\n━━━━━━━━━━━━━━━\n💰 Total: Rp ${grandTotal.toLocaleString('id')}\n(belum termasuk ongkir)\n\n📦 *DATA PENGIRIMAN*\nNama: ${name}\nNo HP: ${phone}\nAlamat: ${addr}${notes?'\nCatatan: '+notes:''}\n\nMohon konfirmasi ketersediaan dan total + ongkirnya ya Kak 😊`;
+  // Save order to Firebase
+  const order={
+    orderId:Date.now(),
+    date:new Date().toISOString(),
+    customer:{name,phone,address:addr,notes},
+    items:cart.map(c=>({name:c.name,price:c.price,qty:c.qty,id:c.id})),
+    total:'Rp '+grandTotal.toLocaleString('id'),
+    status:'baru'
+  };
+  const orders=getOrders();orders.unshift(order);saveOrdersData(orders);
+  // Clear cart & form
+  saveCart([]);
+  ['cartName','cartPhone','cartAddress','cartNotes'].forEach(id=>document.getElementById(id).value='');
+  closeOverlay('overlayCart');renderCart();
+  // Open WA
+  const wa=getSettings().wa||'6285262639795';
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+  toast('✅ Pesanan terkirim! Silakan lanjutkan di WhatsApp.');
+}
 
 // ─── RENDER CATALOG ─────────────────────────────────────
 function renderCatalog(){
@@ -920,7 +1215,7 @@ function renderCatalog(){
         <div class="card-desc">${p.desc||''}</div>
         <div class="card-price">${p.price||'Hubungi Kami'}</div>
         <div class="card-actions">
-          ${habis?`<button class="btn-habis">😔 Stok Habis</button>`:`<button class="btn-pesan" onclick="event.stopPropagation();orderWA(${p.id},'pesan')">🛒 Pesan</button><button class="btn-tawar" onclick="event.stopPropagation();orderWA(${p.id},'tawar')">🤝 Tawar</button>`}
+          ${habis?`<button class="btn-habis">😔 Stok Habis</button>`:`<button class="btn-pesan btn-cart" onclick="event.stopPropagation();addToCart(${p.id})">🛒 Keranjang</button><button class="btn-tawar" onclick="event.stopPropagation();orderWA(${p.id},'tawar')">🤝 Tawar</button>`}
         </div>
       </div>
     </div>`;
@@ -956,7 +1251,7 @@ function openDetail(id){
   document.getElementById('detailPrice').textContent=p.price||'Hubungi Kami';
   document.getElementById('detailActions').innerHTML=habis
     ?`<button class="btn-habis" style="cursor:default;grid-column:1/-1">😔 Stok sedang habis</button>`
-    :`<button class="btn-pesan" onclick="orderWA(${p.id},'pesan')">🛒 Pesan Sekarang</button><button class="btn-tawar" onclick="orderWA(${p.id},'tawar')">🤝 Tawar Harga</button>`;
+    :`<button class="btn-pesan btn-cart" onclick="addToCart(${p.id});closeOverlay('overlayDetail')">🛒 Tambah ke Keranjang</button><button class="btn-tawar" onclick="orderWA(${p.id},'tawar')">🤝 Tawar Harga</button>`;
   openOverlay('overlayDetail');
 }
 
@@ -989,7 +1284,7 @@ function logoutAdmin(){isAdmin=false;showCustomer();toast('👋 Berhasil keluar.
 function showAdminView(){
   document.getElementById('customerView').style.display='none';
   document.getElementById('adminView').style.display='block';
-  renderAdminList();loadSettings();
+  renderAdminList();loadSettings();renderOrders();
 }
 function showCustomer(){
   document.getElementById('adminView').style.display='none';
@@ -1179,7 +1474,10 @@ function switchTab(tabId,btn){
 }
 
 // ─── OVERLAYS ─────────────────────────────────────────────
-function openOverlay(id){document.getElementById(id).classList.add('open')}
+function openOverlay(id){
+  if(id==='overlayCart') renderCart();
+  document.getElementById(id).classList.add('open');
+}
 function closeOverlay(id){document.getElementById(id).classList.remove('open')}
 document.querySelectorAll('.overlay').forEach(o=>{
   o.addEventListener('click',e=>{if(e.target===o)closeOverlay(o.id)});
@@ -1190,6 +1488,69 @@ let toastTimer;
 function toast(msg){
   const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ─── ORDER MANAGEMENT ─────────────────────────────────────
+function renderOrders(){
+  const orders=getOrders();
+  const filtered=currentOrderFilter==='all'?orders:orders.filter(o=>o.status===currentOrderFilter);
+  const newCount=orders.filter(o=>o.status==='baru').length;
+  document.getElementById('adminOrderCount').textContent=orders.length+' Pesanan';
+  const badge=document.getElementById('ordersBadge');
+  if(newCount>0){badge.textContent=newCount;badge.style.display='inline'}
+  else{badge.style.display='none'}
+  const list=document.getElementById('ordersList');
+  if(!filtered.length){
+    list.innerHTML='<div style="text-align:center;padding:40px;color:var(--soft)"><div style="font-size:40px">📋</div><p style="margin-top:8px">Belum ada pesanan'+(currentOrderFilter!=='all'?' dengan status ini':'')+'. </p></div>';
+    return;
+  }
+  const statusLabel={baru:'🟡 Baru',diproses:'🔵 Diproses',dikirim:'🟢 Dikirim',selesai:'✅ Selesai',dibatalkan:'❌ Dibatalkan'};
+  list.innerHTML=filtered.map(o=>{
+    const d=new Date(o.date);
+    const dateStr=d.toLocaleDateString('id',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    const itemsHtml=o.items.map((it,i)=>`${i+1}. ${it.name} ×${it.qty} — ${it.price||'–'}`).join('<br>');
+    return `<div class="order-card">
+      <div class="order-header">
+        <div><span class="order-id">#${String(o.orderId).slice(-6)}</span> <span class="order-date">· ${dateStr}</span></div>
+        <span class="order-status ${o.status}">${statusLabel[o.status]||o.status}</span>
+      </div>
+      <div class="order-customer">👤 <strong>${o.customer.name}</strong><br>📱 ${o.customer.phone}<br>📍 ${o.customer.address}${o.customer.notes?'<br>📝 '+o.customer.notes:''}</div>
+      <div class="order-items-list">${itemsHtml}</div>
+      <div class="order-total">💰 ${o.total}</div>
+      <div class="order-actions">
+        <select onchange="updateOrderStatus(${o.orderId},this.value)">
+          <option value="baru"${o.status==='baru'?' selected':''}>🟡 Baru</option>
+          <option value="diproses"${o.status==='diproses'?' selected':''}>🔵 Diproses</option>
+          <option value="dikirim"${o.status==='dikirim'?' selected':''}>🟢 Dikirim</option>
+          <option value="selesai"${o.status==='selesai'?' selected':''}>✅ Selesai</option>
+          <option value="dibatalkan"${o.status==='dibatalkan'?' selected':''}>❌ Dibatalkan</option>
+        </select>
+        <button class="btn-wa-order" onclick="contactBuyer('${o.customer.phone}')">💬 WA Pembeli</button>
+        <button class="btn-del-order" onclick="deleteOrder(${o.orderId})">🗑 Hapus</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function filterOrders(val,el){
+  currentOrderFilter=val;
+  document.querySelectorAll('.order-filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');renderOrders();
+}
+function updateOrderStatus(orderId,status){
+  const orders=getOrders();const o=orders.find(x=>x.orderId===orderId);
+  if(!o)return;o.status=status;saveOrdersData(orders);renderOrders();
+  const labels={baru:'🟡 Baru',diproses:'🔵 Diproses',dikirim:'🟢 Dikirim',selesai:'✅ Selesai',dibatalkan:'❌ Dibatalkan'};
+  toast(`Status pesanan → ${labels[status]||status}`);
+}
+function deleteOrder(orderId){
+  if(!confirm('Hapus pesanan ini?'))return;
+  saveOrdersData(getOrders().filter(x=>x.orderId!==orderId));
+  renderOrders();toast('🗑 Pesanan dihapus.');
+}
+function contactBuyer(phone){
+  let num=phone.replace(/\D/g,'');
+  if(num.startsWith('0'))num='62'+num.slice(1);
+  window.open(`https://wa.me/${num}`,'_blank');
 }
 
 // ─── INIT ─────────────────────────────────────────────────
